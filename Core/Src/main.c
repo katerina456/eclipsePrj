@@ -75,23 +75,7 @@ void StartLED2Task(void const * argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-/*void vTask1( void *pvParametrs ) {
-	for( ;; ) {
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8);
-
-		HAL_Delay(400);
-	}
-	vTaskDelete( NULL );
-}
-
-void vTask2( void *pvParametrs ) {
-	for( ;; ) {
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_9);
-
-		HAL_Delay(500);
-	}
-	vTaskDelete( NULL );
-}
+/*
 */
 /* USER CODE END 0 */
 
@@ -102,16 +86,16 @@ void vTask2( void *pvParametrs ) {
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	void vTask1( void *pvParametrs ) {
+	void LED1Task( void *pvParametrs ) {
 		for( ;; ) {
 			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8);
 
-			HAL_Delay(2000);
+			HAL_Delay(1000);
 		}
 		vTaskDelete( NULL );
 	}
 
-	void vTask2( void *pvParametrs ) {
+	void LED2Task( void *pvParametrs ) {
 		for( ;; ) {
 			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_9);
 
@@ -185,9 +169,9 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-   	xTaskCreate( vTask1, "Task1", 128, NULL, 2, NULL );
+   	xTaskCreate( LED1Task, "Task1", 128, NULL, 2, NULL );
 
-  	xTaskCreate( vTask2, "Task2", 128, NULL, 2, NULL );
+  	xTaskCreate( LED2Task, "Task2", 128, NULL, 2, NULL );
 
    	vTaskStartScheduler();
   while (1)
