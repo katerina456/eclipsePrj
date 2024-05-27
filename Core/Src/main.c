@@ -75,8 +75,23 @@ void StartLED2Task(void const * argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-/*
-*/
+void LED1Task( void *pvParametrs ) {
+	for( ;; ) {
+		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8);
+
+		HAL_Delay(1000);
+	}
+	vTaskDelete( NULL );
+}
+
+void LED2Task( void *pvParametrs ) {
+	for( ;; ) {
+		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_9);
+
+		HAL_Delay(400);
+	}
+	vTaskDelete( NULL );
+}
 /* USER CODE END 0 */
 
 /**
@@ -86,23 +101,7 @@ void StartLED2Task(void const * argument);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	void LED1Task( void *pvParametrs ) {
-		for( ;; ) {
-			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8);
-
-			HAL_Delay(1000);
-		}
-		vTaskDelete( NULL );
-	}
-
-	void LED2Task( void *pvParametrs ) {
-		for( ;; ) {
-			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_9);
-
-			HAL_Delay(400);
-		}
-		vTaskDelete( NULL );
-	}
+	
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
